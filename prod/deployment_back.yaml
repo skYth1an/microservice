@@ -6,7 +6,7 @@ metadata:
   name: back
   namespace: prod
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: back
