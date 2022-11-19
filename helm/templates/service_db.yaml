@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Release.Name }}-service-db"
+  namespace: {{ .Values.namespace_app1 }}
+spec:
+  ports:
+    - name: db
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: db
+  type: ClusterIP
