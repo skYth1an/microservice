@@ -9,7 +9,7 @@
 -----
 
 #### Ссылка на helm chart
-[helm!](https://github.com/skYth1an/microservice/blob/0ba5e1f53abc19991f6790d6661410d30f78d978/helm)
+[helm!](https://github.com/skYth1an/microservice/blob/1312b71075b54fcc1fe6647b51f56b62e5233a9d/helm)
 
 
 #### Скриншот установленного релиза
