@@ -1,0 +1,19 @@
+replicaCount: 1
+
+namespace_app1: app1
+namespace_app2: app2
+
+image:
+  repository: nginx
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+resources:
+   limits:
+     cpu: 200m
+     memory: 256Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
+
+appPort: 80
