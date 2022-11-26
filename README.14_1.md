@@ -82,6 +82,49 @@ type: Opaque
 ````
 #### Создал секрет с сертами для nginx  
 ![alt text](images/14_1_9.JPG)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: front
+  name: "{{ .Release.Name }}-deployment-front"
+  namespace: {{ .Values.namespace_app1 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - image: "{{ .Values.image.repositoryfront }}:{{ .Values.image.tagfront }}"
+        imagePullPolicy: IfNotPresent
+        name: front
+        env:
+          - name: HOST_BACK
+            value: back:8080
+        volumeMounts:
+        - name: nginx-cert  ## Use this name inside volumes to define mount point
+          mountPath: "/etc/nginx/ssl/"  ## This will be created if not present
+        - name: nginx-config
+          mountPath: "/etc/nginx/"
+      volumes:
+        - name: nginx-cert  ## This must match the volumeMount name
+          secret:
+            secretName: nginx-cert     
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+
+
+```
+
+
 ````yaml
 apiVersion: v1
 data:
