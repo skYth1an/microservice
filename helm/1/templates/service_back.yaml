@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Release.Name }}-service-back"
+  namespace: {{ .Values.namespace_app1 }}
+spec:
+  ports:
+    - name: back
+      port: 80
+      targetPort: 8080
+      nodePort: 30002
+  selector:
+    app: back
+  type: NodePort
