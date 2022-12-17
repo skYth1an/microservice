@@ -8,14 +8,15 @@
 kubectl apply -f 14.5/example-security-context.yml
 ```   
 
+Проверьте установленные настройки внутри контейнера  
 ![alt text](images/14_5_1.jpg) 
 
-Проверьте установленные настройки внутри контейнера
 
 ```
 kubectl logs security-context-demo
 uid=1000 gid=3000 groups=3000
-```
+```  
+
 ![alt text](images/14_5_2.jpg) 
 ## Задача 2 (*): Рассмотрите пример 14.5/example-network-policy.yml
 
