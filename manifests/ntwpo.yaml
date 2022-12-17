@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ntw
+spec:
+  podSelector: 
+    matchLabels:
+      app: nginx2
+  policyTypes:
+  - Ingress
+  - Egress      
+  egress: 
+  - to:
+    - podSelector:
+        matchLabels:
+          app: nginx
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: nginx
+
